@@ -39,6 +39,14 @@
         <systemPath>/root/abcl-bin-1.6.0/abcl.jar</systemPath>
 </dependency>
 
+<!-- need this jar on the classpath during compilation -->
+<dependency>
+	<groupId>com.shared</groupId>
+	<artifactId>shared-things</artifactId>
+	<version>1.0.0</version>
+	<scope>system</scope>
+        <systemPath>/mnt/shared-dependencies/target/shared-things-1.0.0-jar-with-dependencies.jar</systemPath>
+</dependency>
 
 
 <!--
