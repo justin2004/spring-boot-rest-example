@@ -6,7 +6,7 @@
 	<groupId>com.khoubyari</groupId>
 	<artifactId>spring-boot-rest-example</artifactId>
 	<version>0.5.0</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<description>Example project demonstrating REST APIs implemented using Spring Boot, in-memory database, embedded Tomcat, Swagger, JsonPath, Hamcrest and MockMVC</description>
 
 	<parent>
@@ -20,6 +20,41 @@
 	</properties>
 
 	<dependencies>
+
+<!-- need this jar on the classpath during compilation -->
+<dependency>
+	<groupId>com.interloper.Interloper</groupId>
+	<artifactId>interloper</artifactId>
+	<version>1.0</version>
+	<scope>system</scope>
+        <systemPath>${basedir}/other/src/interloper.jar</systemPath>
+</dependency>
+
+<!-- need this jar on the classpath during compilation -->
+<dependency>
+	<groupId>abcl</groupId>
+	<artifactId>abcl</artifactId>
+	<version>1.0</version>
+	<scope>system</scope>
+        <systemPath>/root/abcl-bin-1.6.0/abcl.jar</systemPath>
+</dependency>
+
+
+
+<!--
+<dependency>
+    <groupId>org.abcl</groupId>
+    <artifactId>abcl</artifactId>
+    <version>1.6.0</version>
+</dependency>
+<dependency>
+    <groupId>org.abcl</groupId>
+    <artifactId>abcl-contrib</artifactId>
+    <version>1.6.0</version>
+</dependency>
+-->
+
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -121,6 +156,13 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
 				<configuration>
+<!--
+ <compilerArgs>
+ <arg>-verbose</arg>
+ <arg>-cp</arg>
+ <arg>/root/abcl-bin-1.6.0/abcl.jar</arg>
+ </compilerArgs>
+-->
 					<source>1.8</source>
 					<target>1.8</target>
 				</configuration>

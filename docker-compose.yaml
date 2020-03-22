@@ -1,0 +1,18 @@
+version: "2.0"
+
+services:
+  sb:
+    command: /mnt/entry.sh
+    ports:
+      - "5005:5005"  # for the java debugger
+      - "4005:4005"  # for slime
+      - "8090:8090"  # for the spring boot application
+      - "8091:8091"  # for the spring boot application
+    image: justin2004/springboot-with-cl
+    build: .
+    volumes:
+      - "${PWD}:/mnt"
+      - m2:/root/.m2
+
+volumes:
+    m2:

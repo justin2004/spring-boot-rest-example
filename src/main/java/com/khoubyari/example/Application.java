@@ -13,6 +13,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import org.armedbear.lisp.*;
+import org.armedbear.lisp.Package;
+import com.interloper.Interloper;
+
 /*
  * This is the main Spring Boot application class. It configures Spring Boot, JPA, Swagger
  */
@@ -27,14 +31,38 @@ public class Application extends SpringBootServletInitializer {
     private static final Class<Application> applicationClass = Application.class;
     private static final Logger log = LoggerFactory.getLogger(applicationClass);
 
-	public static void main(String[] args) {
-		SpringApplication.run(applicationClass, args);
-	}
+    public static void main(String[] args) {
+
+        SpringApplication.run(applicationClass, args);
+
+        //Interloper.objs.add(applicationClass);
+        System.out.println("creating a lisp interpreter and starting swank");
+        final Interpreter interpreter = Interpreter.createInstance();
+        interpreter.eval("(load \"/mnt/entry.lisp\")");
+
+        // just for demonstration...
+        // you can add something to the arraylist from lisp and then
+        // you can see it arrive here :)
+        while(true){
+            try{
+                Thread.sleep(5000);
+            } catch (Exception e) {
+                System.out.println(e);
+            } 
+            System.out.println("this pass Interloper.objs contains:");
+            for(Object o : Interloper.objs){
+                System.out.print(o.getClass() + ": ");
+                System.out.println(o);
+                System.out.println();
+            }
+
+        }
+    }
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(applicationClass);
     }
-    
+
 
 }
