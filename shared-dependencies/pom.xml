@@ -13,12 +13,10 @@
 
     <!-- anything you want to be able to use from springboot and lisp should go in here -->
 
-<!-- e.g.         https://mvnrepository.com/artifact/org.apache.jena/jena-core -->
 <dependency>
     <groupId>org.apache.jena</groupId>
-    <artifactId>jena-core</artifactId>
+    <artifactId>jena-tdb2</artifactId>
     <version>3.14.0</version>
-</dependency>
 
 </dependencies>
 
